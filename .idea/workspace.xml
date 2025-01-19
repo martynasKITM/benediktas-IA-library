@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e6391013-de95-448c-96cb-8c8358bb9659" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/AuthorsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/CreateAuthorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Models/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Services/AuthorDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Services/UserDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Utilities/AlertUtility.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Utilities/UserAuthUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Authors.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/CreateAuthor.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Styles/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mazebank.db" beforeDir="false" afterPath="$PROJECT_DIR$/library.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/Admin/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/RouteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/Admin/AdminMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/Admin/ClientCellController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/ClientCellController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/Admin/ClientsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/ClientsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/Admin/CreateClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/CreateClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/Admin/DepositController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/DepositController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/Client/AccountsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/Client/ClientController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/Client/ClientMenuController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/Client/DashboardController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/Client/TransactionCellController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/Client/TransactionsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Models/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Models/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Models/DatabaseDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Models/DatabaseDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Models/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Models/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Models/Transaction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Views/AccountType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Views/AdminMenuOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Views/MenuOptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Views/ClientCellFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Views/ClientCellFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Views/ClientMenuOptions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Views/TransactionCellFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Views/ViewFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/Admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/AdminMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Menu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/ClientCell.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/ClientCell.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/Clients.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Clients.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/CreateClient.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/CreateClient.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/Deposit.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Client/Accounts.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Client/Client.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Client/ClientMenu.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Client/Dashboard.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Client/TransactionCell.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Client/Transactions.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Styles/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Styles/login.css" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="2rl1ZGQytsKTQi1wlqcEK5he10T" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Kirpykla.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/martynas/Code/Edu/IB IA/demo_projektas/src/main/resources/Styles",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/Styles" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/Fxml" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Kirpykla" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.benedict.minibank.App" />
+      <module name="minibank" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e6391013-de95-448c-96cb-8c8358bb9659" name="Changes" comment="" />
+      <created>1737118900547</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1737118900547</updated>
+      <workItem from="1737118901644" duration="32775000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
