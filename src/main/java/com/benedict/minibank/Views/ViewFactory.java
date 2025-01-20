@@ -69,32 +69,6 @@ public class ViewFactory {
     }
 
 
-
-    public AnchorPane getCreateClientView(){
-        if(createClientView == null){
-            try{
-                createClientView = new FXMLLoader(getClass().getResource("/Fxml/CreateClient.fxml")).load();
-            }
-            catch (Exception e){
-                e.printStackTrace();
-            }
-        }
-
-        return createClientView;
-    }
-
-    public AnchorPane getClientsView() {
-        if(clientsView == null){
-            try {
-                clientsView = new FXMLLoader(getClass().getResource("/Fxml/Clients.fxml")).load();
-            }catch (Exception e){
-                System.out.println(e);
-            }
-        }
-        return clientsView;
-    }
-
-
     public void showAdminWindow(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Main.fxml"));
         RouteController controller = new RouteController();

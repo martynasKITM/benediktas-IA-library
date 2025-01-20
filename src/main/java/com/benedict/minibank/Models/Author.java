@@ -64,4 +64,10 @@ public class Author {
     public void setCity(String city) {
         this.city.set(city);
     }
+
+    @Override
+    public String toString() {
+        return String.format("Author [FirstName=%s, LastName=%s, Email=%s, City=%s]",
+                getFirstName(), getLastName(), getEmail(), getCity());
+    }
 }

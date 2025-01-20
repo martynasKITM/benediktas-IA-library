@@ -8,6 +8,7 @@ module com.benedict.minibank {
 
 
     opens com.benedict.minibank to javafx.fxml;
+    opens com.benedict.minibank.Controllers to javafx.fxml;
     exports com.benedict.minibank;
     exports com.benedict.minibank.Controllers;
     exports com.benedict.minibank.Models;

@@ -4,6 +4,8 @@ import com.benedict.minibank.Models.Author;
 import com.benedict.minibank.Models.Model;
 import com.benedict.minibank.Models.User;
 import com.benedict.minibank.Utilities.UserAuthUtils;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -56,8 +58,8 @@ public class AuthorDAO implements GenericDAO{
     }
 
     @Override
-    public List<Author> findAll() {
-        List<Author> authors = new ArrayList<>();
+    public ObservableList<Author> findAll() {
+        ObservableList<Author> authors = FXCollections.observableArrayList();
         String sql = "SELECT FirstName, LastName, Email, City FROM Authors";
 
         try (PreparedStatement stmt = this.conn.prepareStatement(sql);
@@ -68,14 +70,21 @@ public class AuthorDAO implements GenericDAO{
                 String lastName = rs.getString("LastName");
                 String email = rs.getString("Email");
                 String city = rs.getString("City");
+
+                // Create a new Author object and add it to the list
                 Author author = new Author(firstName, lastName, email, city);
                 authors.add(author);
+
+                // Debug: Print to console to verify
+                System.out.printf("Fetched Author: %s %s (%s, %s)%n", firstName, lastName, email, city);
             }
 
         } catch (SQLException e) {
             logger.severe("Error fetching authors: " + e.getMessage());
+            e.printStackTrace(); // Print stack trace for debugging
         }
 
         return authors;
     }
+
 }

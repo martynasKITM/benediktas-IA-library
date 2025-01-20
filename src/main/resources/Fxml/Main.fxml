@@ -9,6 +9,6 @@
     </left>
 
     <center>
-        <fx:include source="CreateClient.fxml"/>
+        <fx:include source="Authors.fxml"/>
     </center>
 </BorderPane>

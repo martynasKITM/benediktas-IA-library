@@ -3,9 +3,13 @@ package com.benedict.minibank.Models;
 import com.benedict.minibank.Services.dao.AuthorDAO;
 import com.benedict.minibank.Services.dao.UserDAO;
 import com.benedict.minibank.Views.ViewFactory;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 
+import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.util.List;
 
 public class Model {
     private static Model model;
@@ -13,7 +17,7 @@ public class Model {
     public final UserDAO userDAO;
     public final AuthorDAO authorDAO;
     private boolean loginSuccessFlag;
-    // private final ObservableList<Client> clients;
+    private final ObservableList<Author> authors;
     private  User currentUser;
 
 
@@ -24,7 +28,7 @@ public class Model {
         this.authorDAO = new AuthorDAO(new DatabaseDriver().getConnection());
         this.loginSuccessFlag = false;
         this.currentUser = null;
-        //this.clients = FXCollections.observableArrayList();
+        this.authors = FXCollections.observableArrayList();
     }
 
     public static synchronized Model getInstance(){
@@ -80,4 +84,11 @@ public class Model {
 
         authorDAO.create(author);
     }
+
+    //Authors
+    public ObservableList<Author> getAuthors(){
+        System.out.println(authorDAO.findAll());
+        return  authorDAO.findAll();
+    }
+
 }

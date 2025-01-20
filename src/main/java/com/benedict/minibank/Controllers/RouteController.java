@@ -13,7 +13,6 @@ public class RouteController implements Initializable {
         Model.getInstance().getViewFactory().getAdminSelectedMenuItem().addListener(( observableValue, oldVal, newVal) -> {
             // Add switch statements
             switch (newVal){
-                case CLIENTS -> admin_parent.setCenter(Model.getInstance().getViewFactory().getClientsView());
                 case AUTHORS -> admin_parent.setCenter(Model.getInstance().getViewFactory().getAuthorsView());
                 case CREATE_AUTHOR -> admin_parent.setCenter(Model.getInstance().getViewFactory().getCreateAuthorView());
                 default -> admin_parent.setCenter(Model.getInstance().getViewFactory().getAuthorsView());
