@@ -37,6 +37,11 @@
                   <Insets top="20.0" />
                </VBox.margin>
             </Button>
+            <Hyperlink fx:id="register_link" text="Užregistruoti naują vartotoją">
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </Hyperlink>
          </children>
       </VBox>
    </children>

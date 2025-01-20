@@ -15,14 +15,15 @@ public class LoginController implements Initializable {
     public PasswordField password_fld;
     public Button login_btn;
     public Label error_lbl;
+    public Hyperlink register_link;
 
     public void initialize( URL url, ResourceBundle resourceBundle ){
         login_btn.setOnAction(actionEvent -> onLogin());
+        register_link.setOnAction(actionEvent -> onRegister());
     }
 
     public void onLogin() {
         Stage stage = (Stage) error_lbl.getScene().getWindow();
-        //Check  credentials
         Model.getInstance().checkCredentials(payee_address_fld.getText(), password_fld.getText());
             if (Model.getInstance().getAdminSuccessFlag()) {
                 Model.getInstance().getViewFactory().showAdminWindow();
@@ -33,6 +34,12 @@ public class LoginController implements Initializable {
                 AlertUtility.displayError("Neteisingi prisijungimo duomenys.");
                 //error_lbl.setText("Neteisingi prisijungimo duomenys");
             }
+        }
+
+        public void onRegister(){
+            Stage stage = (Stage) error_lbl.getScene().getWindow();
+            Model.getInstance().getViewFactory().showRegisterWindow();
+            Model.getInstance().getViewFactory().closeStage(stage);
         }
 
 }

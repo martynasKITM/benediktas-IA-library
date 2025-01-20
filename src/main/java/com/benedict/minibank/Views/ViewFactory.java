@@ -22,9 +22,23 @@ public class ViewFactory {
         this.adminSelectedMenuItem = new SimpleObjectProperty<>();
     }
 
+  //Auth
+
+    /*
+    * User login
+     */
 
     public void showLoginWindow (){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Login.fxml"));
+        createStage(loader);
+    }
+
+    /*
+     * User register
+     */
+
+    public void showRegisterWindow (){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Register.fxml"));
         createStage(loader);
     }
 

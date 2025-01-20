@@ -46,6 +46,19 @@ public class Model {
         this.loginSuccessFlag = flag;
     }
 
+    public boolean hasRegisteredUsers() {
+        return databaseDriver.countUsers() > 0;
+    }
+
+    public boolean isUserAlreadyRegistered(String userName) {
+        return databaseDriver.isUserExist(userName);
+    }
+
+    public void createUser(String userName, String password) {
+        databaseDriver.createUser(userName, password, LocalDate.now());
+        System.out.println("Vartotojas sėkmingai sukurtas.");
+    }
+
     public void checkCredentials(String userName, String password){
         User user = databaseDriver.findUserByCredentials(userName, password);
         if (user != null) {
@@ -53,23 +66,5 @@ public class Model {
         }
     }
 
-    public ObservableList<Client> getClients(){
-        return clients;
-    }
 
-    public void setClients(){
-        ResultSet resultSet = databaseDriver.getAllClientsData();
-        try{
-            while (resultSet.next()){
-                String firstName =  resultSet.getString("FirstName");
-                String lastName = resultSet.getString("LastName");
-                String pAddress = resultSet.getString("PayeeAddress");
-                String[] dateParts = resultSet.getString("Date").split("-");
-                LocalDate date = LocalDate.of(Integer.parseInt(dateParts[0]), Integer.parseInt(dateParts[1]), Integer.parseInt(dateParts[2]));
-                clients.add(new Client(firstName, lastName,pAddress, date));
-            }
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
 }

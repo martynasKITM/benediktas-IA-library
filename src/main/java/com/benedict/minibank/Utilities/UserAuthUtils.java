@@ -29,4 +29,8 @@ public class UserAuthUtils {
         }
         return sb.toString();
     }
+
+    public static boolean doPasswordsMatch(String password1, String password2) {
+        return password1 != null && password1.equals(password2);
+    }
 }

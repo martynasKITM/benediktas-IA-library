@@ -37,14 +37,14 @@ public class DatabaseDriver {
     public User findUserByCredentials(String userName, String password) {
         ResultSet resultSet = null;
         User user = null;
-        String sql = "SELECT Name, Password FROM Users WHERE Name = ?";
+        String sql = "SELECT UserName, Password FROM Users WHERE UserName = ?";
         try (PreparedStatement stmt = this.conn.prepareStatement(sql)) {
             stmt.setString(1, userName);
             resultSet = stmt.executeQuery();
             if (resultSet.next()) {
                 String storedPasswordHash = resultSet.getString("Password");
                 if (UserAuthUtils.verifyPassword(password, storedPasswordHash)) {
-                    user = new User(resultSet.getString("Name"));
+                    user = new User(resultSet.getString("UserName"));
                 }
             }
         } catch (SQLException e) {
@@ -54,14 +54,44 @@ public class DatabaseDriver {
         return user;
     }
 
-    public void createClient(String fName, String lName, String pAddress, String password, LocalDate date) {
-        String sql = "INSERT INTO Clients (FirstName, LastName, PayeeAddress, Password, Date) VALUES (?, ?, ?, ?, ?)";
+    public int countUsers() {
+        int userCount = 0;
+        String sql = "SELECT COUNT(*) AS user_count FROM Users";
+        try (PreparedStatement stmt = this.conn.prepareStatement(sql);
+             ResultSet resultSet = stmt.executeQuery()) {
+
+            if (resultSet.next()) {
+                userCount = resultSet.getInt("user_count");
+                System.out.println("from db: " + userCount);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Replace with proper logging in production
+        }
+        return userCount;
+    }
+
+  //Check if user Exist
+
+    public boolean isUserExist(String userName) {
+        String sql = "SELECT COUNT(*) AS user_count FROM Users WHERE UserName = ?";
         try (PreparedStatement stmt = this.conn.prepareStatement(sql)) {
-            stmt.setString(1, fName);
-            stmt.setString(2, lName);
-            stmt.setString(3, pAddress);
-            stmt.setString(4, password);
-            stmt.setDate(5, java.sql.Date.valueOf(date));
+            stmt.setString(1, userName);
+            ResultSet resultSet = stmt.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getInt("user_count") > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public void createUser(String userName, String password, LocalDate date) {
+        String sql = "INSERT INTO Users (UserName, Password, Date) VALUES (?, ?, ?)";
+        try (PreparedStatement stmt = this.conn.prepareStatement(sql)) {
+            stmt.setString(1, userName);
+            stmt.setString(2, UserAuthUtils.hashPassword(password));
+            stmt.setDate(3, java.sql.Date.valueOf(date));
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -69,29 +99,6 @@ public class DatabaseDriver {
     }
 
 
-    public ResultSet getAllClientsData() {
-        String sql = "SELECT * FROM Clients";
-        try (PreparedStatement stmt = this.conn.prepareStatement(sql)) {
-            return stmt.executeQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-
-    public int getLastClientId() {
-        String sql = "SELECT seq FROM sqlite_sequence WHERE name = 'Clients'";
-        try (PreparedStatement stmt = this.conn.prepareStatement(sql);
-             ResultSet resultSet = stmt.executeQuery()) {
-            if (resultSet.next()) {
-                return resultSet.getInt("seq");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }
 
     /* Athors */
 
