@@ -1,6 +1,8 @@
 package com.benedict.minibank.Models;
 
+import com.benedict.minibank.Services.UserDAO;
 import com.benedict.minibank.Views.ViewFactory;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -11,16 +13,18 @@ import java.time.LocalDate;
 public class Model {
     private static Model model;
     private final ViewFactory viewFactory;
-    private final DatabaseDriver databaseDriver;
+    public final UserDAO userDAO;
     private boolean loginSuccessFlag;
-    private final ObservableList<Client> clients;
+    // private final ObservableList<Client> clients;
+    private  User currentUser;
 
 
     private Model(){
         this.viewFactory = new ViewFactory();
-        this.databaseDriver = new DatabaseDriver();
+        this.userDAO = new UserDAO(new DatabaseDriver().getConnection());
         this.loginSuccessFlag = false;
-        this.clients = FXCollections.observableArrayList();
+        this.currentUser = null;
+        //this.clients = FXCollections.observableArrayList();
     }
 
     public static synchronized Model getInstance(){
@@ -34,9 +38,6 @@ public class Model {
         return viewFactory;
     }
 
-    public DatabaseDriver getDatabaseDriver(){
-        return this.databaseDriver;
-    }
 
     public boolean getAdminSuccessFlag(){
         return this.loginSuccessFlag;
@@ -47,23 +48,27 @@ public class Model {
     }
 
     public boolean hasRegisteredUsers() {
-        return databaseDriver.countUsers() > 0;
+        return userDAO.countUsers() > 0;
     }
 
     public boolean isUserAlreadyRegistered(String userName) {
-        return databaseDriver.isUserExist(userName);
+        return userDAO.isUserExist(userName);
     }
 
     public void createUser(String userName, String password) {
-        databaseDriver.createUser(userName, password, LocalDate.now());
-        System.out.println("Vartotojas sėkmingai sukurtas.");
+        userDAO.createUser(userName, password, LocalDate.now());
     }
 
     public void checkCredentials(String userName, String password){
-        User user = databaseDriver.findUserByCredentials(userName, password);
+        User user = userDAO.findUserByCredentials(userName, password);
         if (user != null) {
             this.loginSuccessFlag = true;
+            this.currentUser = user;
         }
+    }
+
+    public String getLoggedUserName(){
+        return  currentUser != null ? currentUser.usernameProperty() : null;
     }
 
 

@@ -4,6 +4,7 @@ import com.benedict.minibank.Models.Model;
 import com.benedict.minibank.Views.MenuOptions;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -16,10 +17,13 @@ public class MenuController implements Initializable {
     public Button deposit_btn;
     public Button logout_btn;
     public Button authors_btn;
+    public Text user_name;
 
 
     @Override
     public void initialize( URL url, ResourceBundle resourceBundle) {
+        System.out.println("Userio info: " + Model.getInstance().getLoggedUserName());
+        user_name.setText(Model.getInstance().getLoggedUserName());
         addListeners();
     }
 

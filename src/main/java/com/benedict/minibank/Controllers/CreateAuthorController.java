@@ -1,6 +1,4 @@
 package com.benedict.minibank.Controllers;
-
-import com.benedict.minibank.Models.Model;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,7 +6,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class CreateAuthorController implements Initializable {
@@ -29,7 +26,7 @@ public class CreateAuthorController implements Initializable {
         String lName = lName_fld.getText();
         String email = email_fld.getText();
         String city  = city_fld.getText();
-        Model.getInstance().getDatabaseDriver().createAuthor(fName, lName, email, city, LocalDate.now());
+        //Model.getInstance().getDatabaseDriver().createAuthor(fName, lName, email, city, LocalDate.now());
         System.out.println(fName + ", " + lName + ", " + email + ", " + city);
         emptyFields();
         error_lbl.setStyle("-fx-text-fill: blue; -fx-font-size: 1.3em; -fx-font-weight: bold");
