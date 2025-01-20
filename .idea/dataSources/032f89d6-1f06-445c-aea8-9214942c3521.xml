@@ -499,7 +499,7 @@
     <routine id="190" parent="1" name="fts5"/>
     <schema id="191" parent="1" name="main">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2025-01-20.08:02:04</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-01-20.12:02:00</LastIntrospectionLocalTimestamp>
     </schema>
     <argument id="192" parent="16">
       <ArgumentDirection>R</ArgumentDirection>
@@ -1623,55 +1623,59 @@
       <Position>6</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <key id="565" parent="555">
+    <column id="565" parent="555" name="User_id">
+      <Position>7</Position>
+      <StoredType>INTEGER|0s</StoredType>
+    </column>
+    <key id="566" parent="555">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="566" parent="556" name="id">
+    <column id="567" parent="556" name="id">
       <AutoIncrement>1</AutoIncrement>
       <Position>1</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="567" parent="556" name="Password">
+    <column id="568" parent="556" name="Password">
       <Position>2</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="568" parent="556" name="Date">
+    <column id="569" parent="556" name="Date">
       <Position>3</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="569" parent="556" name="UserName">
+    <column id="570" parent="556" name="UserName">
       <Position>4</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <key id="570" parent="556">
+    <key id="571" parent="556">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="571" parent="557" name="type">
+    <column id="572" parent="557" name="type">
       <Position>1</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="572" parent="557" name="name">
+    <column id="573" parent="557" name="name">
       <Position>2</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="573" parent="557" name="tbl_name">
+    <column id="574" parent="557" name="tbl_name">
       <Position>3</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="574" parent="557" name="rootpage">
+    <column id="575" parent="557" name="rootpage">
       <Position>4</Position>
       <StoredType>INT|0s</StoredType>
     </column>
-    <column id="575" parent="557" name="sql">
+    <column id="576" parent="557" name="sql">
       <Position>5</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="576" parent="558" name="name">
+    <column id="577" parent="558" name="name">
       <Position>1</Position>
     </column>
-    <column id="577" parent="558" name="seq">
+    <column id="578" parent="558" name="seq">
       <Position>2</Position>
     </column>
   </database-model>

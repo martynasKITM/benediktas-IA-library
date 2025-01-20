@@ -1,4 +1,6 @@
 package com.benedict.minibank.Controllers;
+import com.benedict.minibank.Models.Model;
+import com.benedict.minibank.Utilities.AlertUtility;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -6,6 +8,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class CreateAuthorController implements Initializable {
@@ -18,19 +21,17 @@ public class CreateAuthorController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        create_author_btn.setOnAction(event -> createClient());
+        create_author_btn.setOnAction(event -> onAuthor());
     }
 
-    private void createClient() {
+    private void onAuthor() {
         String fName = fName_fld.getText();
         String lName = lName_fld.getText();
         String email = email_fld.getText();
         String city  = city_fld.getText();
-        //Model.getInstance().getDatabaseDriver().createAuthor(fName, lName, email, city, LocalDate.now());
-        System.out.println(fName + ", " + lName + ", " + email + ", " + city);
+        Model.getInstance().createAuthor(fName, lName, email, city);
         emptyFields();
-        error_lbl.setStyle("-fx-text-fill: blue; -fx-font-size: 1.3em; -fx-font-weight: bold");
-        error_lbl.setText("Client Created Successfully!");
+        AlertUtility.displayInformation("Autorius išsaugotas sėkmingai");
     }
 
     private void emptyFields() {

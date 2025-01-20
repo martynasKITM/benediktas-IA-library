@@ -1,4 +1,4 @@
-package com.benedict.minibank.Services;
+package com.benedict.minibank.Services.dao;
 
 import java.util.List;
 

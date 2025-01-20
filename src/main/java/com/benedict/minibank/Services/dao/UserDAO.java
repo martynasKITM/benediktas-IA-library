@@ -1,4 +1,4 @@
-package com.benedict.minibank.Services;
+package com.benedict.minibank.Services.dao;
 
 import com.benedict.minibank.Models.User;
 import com.benedict.minibank.Utilities.UserAuthUtils;
@@ -19,14 +19,14 @@ public class UserDAO {
     public User findUserByCredentials(String userName, String password) {
         ResultSet resultSet = null;
         User user = null;
-        String sql = "SELECT UserName, Password FROM Users WHERE UserName = ?";
+        String sql = "SELECT id, UserName, Password FROM Users WHERE UserName = ?";
         try (PreparedStatement stmt = this.conn.prepareStatement(sql)) {
             stmt.setString(1, userName);
             resultSet = stmt.executeQuery();
             if (resultSet.next()) {
                 String storedPasswordHash = resultSet.getString("Password");
                 if (UserAuthUtils.verifyPassword(password, storedPasswordHash)) {
-                    user = new User(resultSet.getString("UserName"));
+                    user = new User(resultSet.getInt("id"),resultSet.getString("UserName"));
                 }
             }
         } catch (SQLException e) {
