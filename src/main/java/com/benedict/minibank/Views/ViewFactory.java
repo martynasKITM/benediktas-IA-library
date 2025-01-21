@@ -16,6 +16,8 @@ public class ViewFactory {
     private AnchorPane depositView;
     private AnchorPane authorsView;
     private AnchorPane createAuthorView;
+    private AnchorPane incomeView;
+    private AnchorPane createIncome;
 
 
     public ViewFactory(){
@@ -66,6 +68,28 @@ public class ViewFactory {
             }
         }
         return createAuthorView;
+    }
+
+    public AnchorPane getIncomeView() {
+        if(incomeView == null){
+            try {
+                incomeView = new FXMLLoader(getClass().getResource("/Fxml/Income.fxml")).load();
+            }catch (Exception e){
+                System.out.println(e);
+            }
+        }
+        return incomeView;
+    }
+
+    public AnchorPane getCreateIncomeView() {
+        if(createIncome == null){
+            try {
+                createIncome = new FXMLLoader(getClass().getResource("/Fxml/AddIncome.fxml")).load();
+            }catch (Exception e){
+                System.out.println(e);
+            }
+        }
+        return createIncome;
     }
 
 

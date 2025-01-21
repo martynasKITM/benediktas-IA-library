@@ -1,6 +1,7 @@
 package com.benedict.minibank.Controllers;
 import com.benedict.minibank.Models.Model;
 import com.benedict.minibank.Utilities.AlertUtility;
+import com.benedict.minibank.Views.MenuOptions;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -30,8 +31,9 @@ public class CreateAuthorController implements Initializable {
         String email = email_fld.getText();
         String city  = city_fld.getText();
         Model.getInstance().createAuthor(fName, lName, email, city);
-        emptyFields();
+        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(MenuOptions.AUTHORS);
         AlertUtility.displayInformation("Autorius išsaugotas sėkmingai");
+
     }
 
     private void emptyFields() {

@@ -12,12 +12,10 @@ import java.util.ResourceBundle;
 
 public class MenuController implements Initializable {
 
-    public Button create_client_btn;
-    public Button clients_btn;
-    public Button deposit_btn;
     public Button logout_btn;
     public Button authors_btn;
     public Text user_name;
+    public Button income_btn;
 
 
     @Override
@@ -31,24 +29,15 @@ public class MenuController implements Initializable {
     private void addListeners(){
         authors_btn.setOnAction(event->onAuthor());
         logout_btn.setOnAction(event->onLogout());
+        income_btn.setOnAction(event->onIncome());
     }
 
     private void onAuthor(){
         Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(MenuOptions.AUTHORS);
     }
 
-
-
-    private void onCreateClient(){
-        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(MenuOptions.CREATE_CLIENT);
-    }
-
-    private void onClient(){
-        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(MenuOptions.CLIENTS);
-    }
-
-    private void onDeposit(){
-        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(MenuOptions.DEPOSIT);
+    private void onIncome(){
+        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(MenuOptions.INCOME);
     }
 
     private void onLogout(){

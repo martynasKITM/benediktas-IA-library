@@ -15,6 +15,8 @@ public class RouteController implements Initializable {
             switch (newVal){
                 case AUTHORS -> admin_parent.setCenter(Model.getInstance().getViewFactory().getAuthorsView());
                 case CREATE_AUTHOR -> admin_parent.setCenter(Model.getInstance().getViewFactory().getCreateAuthorView());
+                case INCOME -> admin_parent.setCenter(Model.getInstance().getViewFactory().getIncomeView());
+                case CREATE_INCOME -> admin_parent.setCenter(Model.getInstance().getViewFactory().getCreateIncomeView());
                 default -> admin_parent.setCenter(Model.getInstance().getViewFactory().getAuthorsView());
             }
         });

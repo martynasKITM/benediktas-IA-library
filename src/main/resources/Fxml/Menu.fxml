@@ -24,7 +24,7 @@
                        <Button fx:id="authors_btn" layoutX="30.0" layoutY="20.0" mnemonicParsing="false" text="Autoriai" />
                        <Button mnemonicParsing="false" text="Knygos">
                     </Button>
-                       <Button mnemonicParsing="false" text="Pardavimai">
+                       <Button fx:id="income_btn" mnemonicParsing="false" text="Pajamos">
                     </Button>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="alt_navigation_btn" text="Prisijungusio vartotojo vardas:">
                      <font>
