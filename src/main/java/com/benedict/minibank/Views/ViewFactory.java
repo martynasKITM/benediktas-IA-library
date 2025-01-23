@@ -10,25 +10,22 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class ViewFactory {
-    private final ObjectProperty<MenuOptions> adminSelectedMenuItem;
-    private AnchorPane createClientView;
-    private AnchorPane clientsView;
-    private AnchorPane depositView;
+    private final ObjectProperty<MenuOptions> userSelectedMenuItem;
     private AnchorPane authorsView;
     private AnchorPane createAuthorView;
     private AnchorPane incomeView;
     private AnchorPane createIncome;
+    private AnchorPane dashboard;
 
 
     public ViewFactory(){
-        this.adminSelectedMenuItem = new SimpleObjectProperty<>();
+        this.userSelectedMenuItem = new SimpleObjectProperty<>();
     }
 
-  //Auth
+    public ObjectProperty<MenuOptions> getuserSelectedMenuItem(){
+        return userSelectedMenuItem;
+    }
 
-    /*
-    * User login
-     */
 
     public void showLoginWindow (){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Login.fxml"));
@@ -44,9 +41,7 @@ public class ViewFactory {
         createStage(loader);
     }
 
-    public ObjectProperty<MenuOptions> getAdminSelectedMenuItem(){
-        return adminSelectedMenuItem;
-    }
+
 
     public AnchorPane getAuthorsView() {
         if(authorsView == null){
@@ -99,6 +94,8 @@ public class ViewFactory {
         loader.setController(controller);
         createStage(loader);
     }
+
+
 
     public void createStage(FXMLLoader loader){
         Scene scene = null;

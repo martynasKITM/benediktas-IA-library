@@ -14,11 +14,19 @@
       <Button fx:id="add_author" layoutX="376.0" layoutY="92.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="109.0" text="Pridėti autorių" />
       <TableView fx:id="authors_table" layoutX="11.0" layoutY="198.0" prefHeight="304.0" prefWidth="810.0">
         <columns>
+            <TableColumn fx:id="colID" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="colFirstName" prefWidth="75.0" text="Vardas" />
           <TableColumn fx:id="colLastName" prefWidth="75.0" text="Pavardė" />
             <TableColumn fx:id="colEmail" prefWidth="75.0" text="El. paštas" />
             <TableColumn fx:id="colCity" prefWidth="75.0" text="Miestas" />
         </columns>
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem fx:id="removeMenuItem" mnemonicParsing="false" text="Šalinti" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
       </TableView>
    </children>
 </AnchorPane>

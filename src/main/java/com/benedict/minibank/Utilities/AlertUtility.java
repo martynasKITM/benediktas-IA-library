@@ -29,9 +29,5 @@ public class AlertUtility {
 
     private static void styleDialog(Dialog<?> dialog) {
         DialogPane dialogPane = dialog.getDialogPane();
-        dialogPane.getStylesheets().add(
-                AlertUtility.class.getResource("/Styles/bootstrap.min.css").toExternalForm()
-        );
-        dialogPane.getStyleClass().add("alert");
     }
 }

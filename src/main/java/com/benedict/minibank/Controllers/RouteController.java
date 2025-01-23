@@ -10,8 +10,7 @@ public class RouteController implements Initializable {
     public BorderPane admin_parent;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().addListener(( observableValue, oldVal, newVal) -> {
-            // Add switch statements
+        Model.getInstance().getViewFactory().getuserSelectedMenuItem().addListener(( observableValue, oldVal, newVal) -> {
             switch (newVal){
                 case AUTHORS -> admin_parent.setCenter(Model.getInstance().getViewFactory().getAuthorsView());
                 case CREATE_AUTHOR -> admin_parent.setCenter(Model.getInstance().getViewFactory().getCreateAuthorView());

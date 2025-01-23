@@ -33,11 +33,11 @@ public class MenuController implements Initializable {
     }
 
     private void onAuthor(){
-        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(MenuOptions.AUTHORS);
+        Model.getInstance().getViewFactory().getuserSelectedMenuItem().set(MenuOptions.AUTHORS);
     }
 
     private void onIncome(){
-        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(MenuOptions.INCOME);
+        Model.getInstance().getViewFactory().getuserSelectedMenuItem().set(MenuOptions.INCOME);
     }
 
     private void onLogout(){

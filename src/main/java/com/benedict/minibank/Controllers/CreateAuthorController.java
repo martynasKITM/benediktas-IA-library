@@ -9,7 +9,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class CreateAuthorController implements Initializable {
@@ -31,8 +30,9 @@ public class CreateAuthorController implements Initializable {
         String email = email_fld.getText();
         String city  = city_fld.getText();
         Model.getInstance().createAuthor(fName, lName, email, city);
-        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(MenuOptions.AUTHORS);
+        Model.getInstance().getViewFactory().getuserSelectedMenuItem().set(MenuOptions.AUTHORS);
         AlertUtility.displayInformation("Autorius išsaugotas sėkmingai");
+        emptyFields();
 
     }
 

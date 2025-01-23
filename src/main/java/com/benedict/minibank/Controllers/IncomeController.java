@@ -24,6 +24,6 @@ public class IncomeController implements Initializable {
     }
 
     public void onCreateIncome(){
-        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(MenuOptions.CREATE_INCOME);
+        Model.getInstance().getViewFactory().getuserSelectedMenuItem().set(MenuOptions.CREATE_INCOME);
     }
 }

@@ -80,9 +80,15 @@ public class Model {
     }
 
     public void createAuthor(String fName, String lastName, String email, String city){
-        Author author = new Author(fName, lastName, email, city);
+        authorDAO.create(fName, lastName, email, city);
+    }
 
-        authorDAO.create(author);
+    public void updateAuthor(Author author){
+        authorDAO.update(author);
+    }
+
+    public void deleteAuthor(int id){
+        authorDAO.delete(id);
     }
 
     //Authors

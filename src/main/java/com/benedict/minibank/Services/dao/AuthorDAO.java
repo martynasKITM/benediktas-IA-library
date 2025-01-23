@@ -21,18 +21,21 @@ public class AuthorDAO implements GenericDAO{
         this.conn = conn;
     }
 
-    public void create(Author author) {
+    @Override
+    public void create(String fName, String lastName, String email, String city) {
         String sql = "INSERT INTO Authors (FirstName, LastName, Email, City, Date, User_id) VALUES (?, ?, ?, ?, ?, ?)";
         int userId = Model.getInstance().getLoggedUserId();
         try (PreparedStatement stmt = this.conn.prepareStatement(sql)) {
-            stmt.setString(1, author.getFirstName());
-            stmt.setString(2, author.getLastName());
-            stmt.setString(3, author.getEmail());
-            stmt.setString(4, author.getCity());
+            stmt.setString(1, fName);
+            stmt.setString(2, lastName);
+            stmt.setString(3, email);
+            stmt.setString(4, city);
             stmt.setDate(5, java.sql.Date.valueOf(LocalDate.now()));
             stmt.setInt(6, userId);
             stmt.executeUpdate();
+            logger.info("Author successfully created.");
         } catch (SQLException e) {
+            logger.severe("Error creating author: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -43,47 +46,72 @@ public class AuthorDAO implements GenericDAO{
     }
 
     @Override
-    public void create(Object entity) {
-
-    }
-
-    @Override
     public void update(Object entity) {
+        if (!(entity instanceof Author)) {
+            throw new IllegalArgumentException("Expected an Author object");
+        }
+        Author author = (Author) entity;
+        String sql = "UPDATE Authors SET FirstName = ?, LastName = ?, Email = ?, City = ? WHERE id = ?";
+        try (PreparedStatement stmt = this.conn.prepareStatement(sql)) {
+            stmt.setString(1, author.getFirstName());
+            stmt.setString(2, author.getLastName());
+            stmt.setString(3, author.getEmail());
+            stmt.setString(4, author.getCity());
+            stmt.setInt(5, author.getId());
 
+            int rowsUpdated = stmt.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                logger.info("Author updated successfully: " + author);
+            } else {
+                logger.warning("No author found with id: " + author.getId());
+            }
+        } catch (SQLException e) {
+            logger.severe("Error updating author: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void delete(int id) {
+        String sql = "DELETE FROM Authors WHERE id = ?";
+        try (PreparedStatement stmt = this.conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            int rowsAffected = stmt.executeUpdate();
 
+            if (rowsAffected > 0) {
+                logger.info("Author with ID " + id + " was deleted successfully.");
+            } else {
+                logger.warning("No author found with ID " + id + " to delete.");
+            }
+        } catch (SQLException e) {
+            logger.severe("Error deleting author with ID " + id + ": " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     @Override
     public ObservableList<Author> findAll() {
         ObservableList<Author> authors = FXCollections.observableArrayList();
-        String sql = "SELECT FirstName, LastName, Email, City FROM Authors";
+        String sql = "SELECT id, FirstName, LastName, Email, City FROM Authors";
 
         try (PreparedStatement stmt = this.conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
+                int id = rs.getInt("id");
                 String firstName = rs.getString("FirstName");
                 String lastName = rs.getString("LastName");
                 String email = rs.getString("Email");
                 String city = rs.getString("City");
 
-                // Create a new Author object and add it to the list
-                Author author = new Author(firstName, lastName, email, city);
+                Author author = new Author(id, firstName, lastName, email, city);
                 authors.add(author);
-
-                // Debug: Print to console to verify
-                System.out.printf("Fetched Author: %s %s (%s, %s)%n", firstName, lastName, email, city);
             }
-
         } catch (SQLException e) {
             logger.severe("Error fetching authors: " + e.getMessage());
-            e.printStackTrace(); // Print stack trace for debugging
+            e.printStackTrace();
         }
-
         return authors;
     }
 
