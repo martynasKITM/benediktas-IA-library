@@ -5,25 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6391013-de95-448c-96cb-8c8358bb9659" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/DashboardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Utilities/DialogUtility.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Dashboard.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Demo.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library.db" beforeDir="false" afterPath="$PROJECT_DIR$/library.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/AuthorsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/AuthorsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/CreateAuthorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/CreateAuthorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/IncomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/IncomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/RouteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Controllers/RouteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Models/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Models/Author.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Models/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Models/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Services/dao/AuthorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Services/dao/AuthorDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Services/dao/GenericDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Services/dao/GenericDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Utilities/AlertUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Utilities/AlertUtility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/benedict/minibank/Views/ViewFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Authors.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Authors.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Main.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Readem.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +124,7 @@
       <updated>1737118900547</updated>
       <workItem from="1737118901644" duration="33557000" />
       <workItem from="1737355712683" duration="32508000" />
-      <workItem from="1737626407988" duration="13994000" />
+      <workItem from="1737626407988" duration="14385000" />
     </task>
     <servers />
   </component>
