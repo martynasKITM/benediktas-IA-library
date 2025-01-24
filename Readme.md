@@ -71,4 +71,11 @@ This project is an educational example created for IB Computer Science students 
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/martynasKITM/benediktas-IA-library.git
-   Load maven project in InteliJ and Build
+   ```
+2. **Load Maven project**
+3. **Run**
+
+## How to Work with database
+1. Download DB browser:
+   https://sqlitebrowser.org/dl/
+2. Open library.db with DB browser
