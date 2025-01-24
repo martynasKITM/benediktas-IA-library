@@ -1,16 +1,15 @@
-package com.benedict.minibank.Controllers;
+package com.benedict.library.Controllers;
 
-import com.benedict.minibank.Models.Author;
-import com.benedict.minibank.Models.Model;
-import com.benedict.minibank.Utilities.AlertUtility;
-import com.benedict.minibank.Utilities.DialogUtility;
-import com.benedict.minibank.Views.MenuOptions;
+import com.benedict.library.Models.Author;
+import com.benedict.library.Models.Model;
+import com.benedict.library.Utilities.AlertUtility;
+import com.benedict.library.Utilities.DialogUtility;
+import com.benedict.library.Views.MenuOptions;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.Optional;
@@ -134,20 +133,20 @@ public class AuthorsController implements Initializable {
     private void onRemoveAuthor() {
         Author selectedAuthor = authors_table.getSelectionModel().getSelectedItem();
         if (selectedAuthor == null) {
-            AlertUtility.displayError("Please select an author. No row is selected.");
+            AlertUtility.displayError("Pasirinkite autorių.");
             return;
         }
 
         // Show confirmation dialog
         boolean confirmed = AlertUtility.displayConfirmation(
-                "Are you sure you want to remove this author from the system?"
+                "Ar tikrai norite pašalinti autorių iš sistemos?"
         );
 
         if (confirmed) {
             Model.getInstance().deleteAuthor(selectedAuthor.getId());
             authors_table.getItems().remove(selectedAuthor);
             authors_table.refresh();
-            AlertUtility.displayInformation("Author removed successfully.");
+            AlertUtility.displayInformation("Autorius pašalintas sėkmingai.");
         }
     }
 }

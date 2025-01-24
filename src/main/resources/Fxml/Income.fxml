@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.benedict.minibank.Controllers.IncomeController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.benedict.library.Controllers.IncomeController">
    <children>
       <Label layoutX="252.0" layoutY="28.0" text="Pajamu valdymas" />
       <Button fx:id="add_btn" layoutX="273.0" layoutY="70.0" mnemonicParsing="false" text="Prideti" />

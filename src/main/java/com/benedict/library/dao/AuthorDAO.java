@@ -1,26 +1,43 @@
-package com.benedict.minibank.Services.dao;
+/**
+ * Package declaration for the DAO (Data Access Object) classes.
+ */
+package com.benedict.library.dao;
 
-import com.benedict.minibank.Models.Author;
-import com.benedict.minibank.Models.Model;
-import com.benedict.minibank.Models.User;
-import com.benedict.minibank.Utilities.UserAuthUtils;
+import com.benedict.library.Models.Author;
+import com.benedict.library.Models.Model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
 
-public class AuthorDAO implements GenericDAO{
+/**
+ * DAO class for managing Author data.
+ * Implements the GenericDAO interface to provide basic CRUD operations for Authors.
+ */
+public class AuthorDAO implements GenericDAO {
+
     private Connection conn;
     private static final Logger logger = Logger.getLogger(UserDAO.class.getName());
 
+    /**
+     * Constructor to initialize the AuthorDAO with a database connection.
+     *
+     * @param conn the Connection object used for interacting with the database.
+     */
     public AuthorDAO(Connection conn) {
         this.conn = conn;
     }
 
+    /**
+     * Creates a new author in the database.
+     *
+     * @param fName    the first name of the author.
+     * @param lastName the last name of the author.
+     * @param email    the email of the author.
+     * @param city     the city of the author.
+     */
     @Override
     public void create(String fName, String lastName, String email, String city) {
         String sql = "INSERT INTO Authors (FirstName, LastName, Email, City, Date, User_id) VALUES (?, ?, ?, ?, ?, ?)";
@@ -30,7 +47,7 @@ public class AuthorDAO implements GenericDAO{
             stmt.setString(2, lastName);
             stmt.setString(3, email);
             stmt.setString(4, city);
-            stmt.setDate(5, java.sql.Date.valueOf(LocalDate.now()));
+            stmt.setDate(5, Date.valueOf(LocalDate.now()));
             stmt.setInt(6, userId);
             stmt.executeUpdate();
             logger.info("Author successfully created.");
@@ -40,11 +57,23 @@ public class AuthorDAO implements GenericDAO{
         }
     }
 
+    /**
+     * Finds an author by their ID. Not yet implemented.
+     *
+     * @param id the ID of the author to be found.
+     * @return an Object representing the found author or null if not found.
+     */
     @Override
     public Object findById(int id) {
         return null;
     }
 
+    /**
+     * Updates an existing author in the database.
+     *
+     * @param entity an object representing the Author to be updated. Must be an instance of Author.
+     * @throws IllegalArgumentException if the entity is not an instance of Author.
+     */
     @Override
     public void update(Object entity) {
         if (!(entity instanceof Author)) {
@@ -72,6 +101,11 @@ public class AuthorDAO implements GenericDAO{
         }
     }
 
+    /**
+     * Deletes an author from the database by their ID.
+     *
+     * @param id the ID of the author to be deleted.
+     */
     @Override
     public void delete(int id) {
         String sql = "DELETE FROM Authors WHERE id = ?";
@@ -90,6 +124,11 @@ public class AuthorDAO implements GenericDAO{
         }
     }
 
+    /**
+     * Retrieves all authors from the database.
+     *
+     * @return an ObservableList of Author objects representing all authors in the database.
+     */
     @Override
     public ObservableList<Author> findAll() {
         ObservableList<Author> authors = FXCollections.observableArrayList();
@@ -114,5 +153,4 @@ public class AuthorDAO implements GenericDAO{
         }
         return authors;
     }
-
 }

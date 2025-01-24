@@ -1,21 +1,39 @@
-package com.benedict.minibank.Services.dao;
+package com.benedict.library.dao;
 
-import com.benedict.minibank.Models.User;
-import com.benedict.minibank.Utilities.UserAuthUtils;
+import com.benedict.library.Models.User;
+import com.benedict.library.Utilities.UserAuthUtils;
 
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.logging.Logger;
 
+/**
+ * Data Access Object (DAO) for interacting with the "Users" table in the database.
+ *
+ * This class provides methods for managing user data, including operations to check if a user exists,
+ * retrieve a user by credentials (username and password), count users, and create a new user.
+ * The methods interact with the database to perform CRUD operations related to users.
+ */
 public class UserDAO {
     private Connection conn;
     private static final Logger logger = Logger.getLogger(UserDAO.class.getName());
 
+    /**
+     * Constructor for UserDAO that initializes the database connection.
+     *
+     * @param conn the database connection to be used by the DAO
+     */
     public UserDAO(Connection conn) {
         this.conn = conn;
     }
 
-    // Find user by credentials (username and password)
+    /**
+     * Finds a user by their credentials (username and password).
+     *
+     * @param userName the username of the user
+     * @param password the password of the user
+     * @return a User object if the credentials are valid, null if not
+     */
     public User findUserByCredentials(String userName, String password) {
         ResultSet resultSet = null;
         User user = null;
@@ -26,17 +44,21 @@ public class UserDAO {
             if (resultSet.next()) {
                 String storedPasswordHash = resultSet.getString("Password");
                 if (UserAuthUtils.verifyPassword(password, storedPasswordHash)) {
-                    user = new User(resultSet.getInt("id"),resultSet.getString("UserName"));
+                    user = new User(resultSet.getInt("id"), resultSet.getString("UserName"));
                 }
             }
         } catch (SQLException e) {
-            logger.info("Database error");
+            logger.severe("Database error while finding user by credentials: " + e.getMessage());
             e.printStackTrace();
         }
         return user;
     }
 
-    // Count total number of users
+    /**
+     * Counts the total number of users in the "Users" table.
+     *
+     * @return the total count of users
+     */
     public int countUsers() {
         int userCount = 0;
         String sql = "SELECT COUNT(*) AS user_count FROM Users";
@@ -52,7 +74,12 @@ public class UserDAO {
         return userCount;
     }
 
-    // Check if a user exists by username
+    /**
+     * Checks if a user exists in the database by their username.
+     *
+     * @param userName the username to check
+     * @return true if the user exists, false otherwise
+     */
     public boolean isUserExist(String userName) {
         String sql = "SELECT COUNT(*) AS user_count FROM Users WHERE UserName = ?";
         try (PreparedStatement stmt = this.conn.prepareStatement(sql)) {
@@ -67,13 +94,19 @@ public class UserDAO {
         return false;
     }
 
-    // Create a new user
+    /**
+     * Creates a new user in the "Users" table with the specified username, password, and registration date.
+     *
+     * @param userName the username of the new user
+     * @param password the password of the new user
+     * @param date the registration date of the new user
+     */
     public void createUser(String userName, String password, LocalDate date) {
         String sql = "INSERT INTO Users (UserName, Password, Date) VALUES (?, ?, ?)";
         try (PreparedStatement stmt = this.conn.prepareStatement(sql)) {
             stmt.setString(1, userName);
-            stmt.setString(2, UserAuthUtils.hashPassword(password));
-            stmt.setDate(3, java.sql.Date.valueOf(date));
+            stmt.setString(2, UserAuthUtils.hashPassword(password)); // Hash the password before saving
+            stmt.setDate(3, Date.valueOf(date));
             stmt.executeUpdate();
         } catch (SQLException e) {
             logger.severe("Error creating user: " + e.getMessage());
