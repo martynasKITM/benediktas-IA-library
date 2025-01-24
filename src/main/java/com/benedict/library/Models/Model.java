@@ -9,7 +9,7 @@ import javafx.collections.ObservableList;
 import java.time.LocalDate;
 
 /**
- * The central model class for the MiniBank application.
+ * The central model class for the Library application.
  * This class is a singleton that serves as a bridge between the application's business logic,
  * data access objects (DAOs), and views. It manages the application's state and user data.
  */

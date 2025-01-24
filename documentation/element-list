@@ -1,0 +1,7 @@
+module:com.benedict.minibank
+com.benedict.library
+com.benedict.library.Controllers
+com.benedict.library.dao
+com.benedict.library.Models
+com.benedict.library.Utilities
+com.benedict.library.Views
