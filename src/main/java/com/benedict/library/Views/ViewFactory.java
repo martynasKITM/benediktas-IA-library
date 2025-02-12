@@ -61,15 +61,14 @@ public class ViewFactory {
      * @return the loaded AnchorPane for the Authors view
      */
     public AnchorPane getAuthorsView() {
-        if(authorsView == null){
-            try {
-                authorsView = new FXMLLoader(getClass().getResource("/Fxml/Authors.fxml")).load();
-            }catch (Exception e){
-                System.out.println(e);
-            }
+        try {
+            return new FXMLLoader(getClass().getResource("/Fxml/Authors.fxml")).load();
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
         }
-        return authorsView;
     }
+
 
     /**
      * Loads and returns the Create Author view.

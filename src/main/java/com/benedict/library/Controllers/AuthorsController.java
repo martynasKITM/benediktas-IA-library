@@ -6,6 +6,8 @@ import com.benedict.library.Utilities.AlertUtility;
 import com.benedict.library.Utilities.DialogUtility;
 import com.benedict.library.Views.MenuOptions;
 import javafx.collections.ObservableList;
+import javafx.collections.ListChangeListener;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -30,10 +32,17 @@ public class AuthorsController implements Initializable {
     public TableView<Author> authors_table;
 
     /** TableColumn for displaying the ID of the author. */
+    @FXML
     public TableColumn<Author, Integer> colID;
 
     /** Context menu item for removing an author. */
+    @FXML
     public MenuItem removeMenuItem;
+
+    public TextField filterFirstName;
+    public TextField filterLastName;
+    public TextField filterCity;
+    public Button filterButton;
 
     /** TableColumn for displaying the first name of the author. */
     @FXML
@@ -51,6 +60,8 @@ public class AuthorsController implements Initializable {
     @FXML
     private TableColumn<Author, String> colCity;
 
+    private FilteredList<Author> filteredAuthors;
+
     /**
      * Initializes the controller.
      * Sets up table columns, loads author data, and assigns event handlers.
@@ -62,10 +73,17 @@ public class AuthorsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initTableColumns();
         loadAuthorData();
-        Model.getInstance().getAuthors();
+
+        // Initialize filteredAuthors here
+        filteredAuthors = new FilteredList<>(Model.getInstance().getAuthors());
+
+        // Bind the table to filteredAuthors
+        authors_table.setItems(filteredAuthors);
+
         add_author.setOnAction(event -> onCreateAuthor());
         setRowFactoryForAuthorsTable();
         removeMenuItem.setOnAction(event -> onRemoveAuthor());
+        filterButton.setOnAction(event -> applyFilters());
     }
 
     /**
@@ -82,6 +100,17 @@ public class AuthorsController implements Initializable {
     private void loadAuthorData() {
         ObservableList<Author> authors = Model.getInstance().getAuthors();
         authors_table.setItems(authors);
+
+        // Add a listener to refresh table automatically when data changes
+        authors.addListener((ListChangeListener<Author>) change -> {
+            while (change.next()) {
+                if (change.wasAdded() || change.wasRemoved() || change.wasUpdated()) {
+                    authors_table.refresh();
+                }
+            }
+        });
+
+        authors_table.refresh();
     }
 
     /**
@@ -121,8 +150,8 @@ public class AuthorsController implements Initializable {
     private void editAuthor(Author author) {
         Optional<Author> result = DialogUtility.showEditAuthorDialog(author);
         result.ifPresent(updatedAuthor -> {
-            authors_table.refresh();
             Model.getInstance().updateAuthor(updatedAuthor);
+            loadAuthorData(); // Reload data to reflect changes
         });
     }
 
@@ -137,16 +166,39 @@ public class AuthorsController implements Initializable {
             return;
         }
 
-        // Show confirmation dialog
         boolean confirmed = AlertUtility.displayConfirmation(
                 "Ar tikrai norite pašalinti autorių iš sistemos?"
         );
 
         if (confirmed) {
             Model.getInstance().deleteAuthor(selectedAuthor.getId());
-            authors_table.getItems().remove(selectedAuthor);
+            ObservableList<Author> authors = authors_table.getItems();
+            authors.remove(selectedAuthor);
             authors_table.refresh();
             AlertUtility.displayInformation("Autorius pašalintas sėkmingai.");
         }
+    }
+
+    /**
+     * Applies the filters to the list of authors based on the provided input.
+     * Filters authors by first name, last name, and city.
+     */
+    private void applyFilters() {
+        String firstNameFilter = filterFirstName.getText().toLowerCase();
+        String lastNameFilter = filterLastName.getText().toLowerCase();
+        String cityFilter = filterCity.getText().toLowerCase();
+
+        filteredAuthors.setPredicate(author -> {
+            if (!firstNameFilter.isEmpty() && !author.getFirstName().toLowerCase().contains(firstNameFilter)) {
+                return false;
+            }
+            if (!lastNameFilter.isEmpty() && !author.getLastName().toLowerCase().contains(lastNameFilter)) {
+                return false;
+            }
+            if (!cityFilter.isEmpty() && !author.getCity().toLowerCase().contains(cityFilter)) {
+                return false;
+            }
+            return true;
+        });
     }
 }

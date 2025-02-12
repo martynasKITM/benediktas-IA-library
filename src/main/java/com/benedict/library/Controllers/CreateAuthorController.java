@@ -1,5 +1,6 @@
 package com.benedict.library.Controllers;
 
+import com.benedict.library.Models.Author;
 import com.benedict.library.Models.Model;
 import com.benedict.library.Utilities.AlertUtility;
 import com.benedict.library.Views.MenuOptions;
@@ -63,6 +64,9 @@ public class CreateAuthorController implements Initializable {
 
         // Clear input fields for the next entry
         emptyFields();
+
+
+
     }
 
     /**
@@ -75,4 +79,6 @@ public class CreateAuthorController implements Initializable {
         email_fld.setText(""); // Clear the email field
         city_fld.setText(""); // Clear the city field
     }
+
+
 }

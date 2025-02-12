@@ -34,6 +34,7 @@ public class Model {
         this.loginSuccessFlag = false;
         this.currentUser = null;
         this.authors = FXCollections.observableArrayList();
+        loadAuthorsFromDB();
     }
 
     /**
@@ -55,6 +56,13 @@ public class Model {
      */
     public ViewFactory getViewFactory() {
         return viewFactory;
+    }
+
+
+    /** load all authors from DB **/
+
+    private void loadAuthorsFromDB() {
+        authors.setAll(authorDAO.findAll()); // Užtikrina, kad ObservableList bus atnaujintas
     }
 
     /**
